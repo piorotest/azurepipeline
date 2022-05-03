@@ -13,11 +13,11 @@ steps:
 - task: Check engine
   inputs:
     script: |
-      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d myengine
+      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d dxt1
   displayName: 'Command Line Script'
 
 - task: Refresh VDB
   inpus:
     script: |
-      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d myengine -name pipedb
+      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d dxt1 -name pipedb
   displayName: 'Command Line Script'
