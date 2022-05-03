@@ -10,13 +10,13 @@ steps:
       echo Write your commands here
       echo Hello world
 
-- task: Check engine
+- task: Check engine@2
   inputs:
     script: |
       docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d dxt1
   displayName: 'Command Line Script'
 
-- task: Refresh VDB
+- task: Refresh VDB@2
   inputs:
     script: |
       docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d dxt1 -name pipedb
