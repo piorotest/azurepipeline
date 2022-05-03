@@ -17,7 +17,7 @@ steps:
   displayName: 'Command Line Script'
 
 - task: Refresh VDB
-  inpus:
+  inputs:
     script: |
       docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d dxt1 -name pipedb
   displayName: 'Command Line Script'
