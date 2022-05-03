@@ -1,11 +1,13 @@
-trigger:
-- main
-
 pool:
   name: Azure Pipelines
+steps:
+- task: DockerInstaller@0
+  displayName: 'Install Docker 17.09.0-ce'
 
-jobs:
-- job: 'Snap_Production_Postgres_and_FS'
-  steps:
-  - bash: /home/delphix/dxtoolkit2/dx_snapshot_db -name 'Postgres_master'
-  - bash: /home/delphix/dxtoolkit2/dx_snapshot_db -name 'AppFS_master'
+- script: |
+   echo Write your commands here
+   echo Hello world
+   
+   docker run -v /configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d myengine
+   
+  displayName: 'Command Line Script'
