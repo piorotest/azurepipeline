@@ -8,6 +8,6 @@ steps:
    echo Write your commands here
    echo Hello world
    
-   docker run -v /configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d myengine
+   docker run -v ./configdir:/config pioro/dxtoolkit:latest dx_get_appliance -d myengine
    
   displayName: 'Command Line Script'
