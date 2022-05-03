@@ -20,5 +20,5 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d dxt1 -name pipedb
+      docker run -v `pwd`/configdir:/config pioro/dxtoolkit:latest dx_refresh_db -d dxt1 -name ABC
   displayName: refresh vdb
