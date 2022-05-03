@@ -2,9 +2,7 @@ trigger:
 - main
 
 pool:
-  name: Default
-  demands:
-   - agent.name -equals devops
+  name: 'Azure Pipelines' 
 
 jobs:
 - job: 'Snap_Production_Postgres_and_FS'
