@@ -1,0 +1,13 @@
+trigger:
+- main
+
+pool:
+  name: Default
+  demands:
+   - agent.name -equals devops
+
+jobs:
+- job: 'Snap_Production_Postgres_and_FS'
+  steps:
+  - bash: /home/delphix/dxtoolkit2/dx_snapshot_db -name 'Postgres_master'
+  - bash: /home/delphix/dxtoolkit2/dx_snapshot_db -name 'AppFS_master'
