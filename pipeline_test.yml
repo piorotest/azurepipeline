@@ -9,7 +9,7 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
-  displayName: check something
+  displayName: check something 2
 
 - task: CmdLine@2
   inputs:
