@@ -11,12 +11,7 @@ steps:
       echo Hello world
   displayName: check something 2
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'pioro'
-    command: 'run'
-    arguments: '-e slon'
-    container: 'pioro/dxtoolkit:latest' 
+
 - task: CmdLine@2
   inputs:
     script: |
