@@ -14,7 +14,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'pioro'
-    command: 'start'
+    command: 'run'
     arguments: '-e slon'
     container: 'pioro/dxtoolkit:latest' 
 - task: CmdLine@2
