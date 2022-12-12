@@ -1,7 +1,7 @@
 variables:
    URL_SHELL: $(URL)
    API_KEY_SHELL: $(API_KEY)
-   PIPENAME_SHELL: $(Date:yyyyMMdd)$(Rev:.r)
+   PIPENAME_SHELL: $(Build.BuildNumber)
 
 pool:
   name: Azure Pipelines
@@ -16,9 +16,11 @@ steps:
       echo Hello world
       echo $PIPENAME_SHELL
       echo $URL_SHELL
-      echo $(Date:yyyyMMdd)$(Rev:.r)
+      echo $PIPENAME_SHELL
       echo "bi name"
       echo $BINAME
+      echo "bi number"
+      echo $PIPENAME_SHELL
   displayName: check something 2
   env:
     BINAME: $(Date:yyyyMMdd)$(Rev:.r)
