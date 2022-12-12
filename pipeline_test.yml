@@ -14,7 +14,12 @@ steps:
       echo Write your commands here
       echo Hello world
       echo $(System.JobId)
+      echo $(System.JobName)
+      echo $(System.JobDisplayName)
+      echo $MARCIN
   displayName: check something 2
+  env:
+     MARCIN=$(System.JobDisplayName)
 
 
 - task: Bash@3
