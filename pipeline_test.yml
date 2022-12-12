@@ -1,23 +1,48 @@
+variables:
+   URL_SHELL: $(URL)
+   API_KEY_SHELL: $(API_KEY)
+   PIPENAME_SHELL: $(Build.BuildNumber)
+
 pool:
   name: Azure Pipelines
 steps:
 - task: DockerInstaller@0
   displayName: 'Install Docker 17.09.0-ce'
 
-- task: CmdLine@2
+
+- task: Bash@3
+  continueOnError: True
   inputs:
+    targetType: 'inline'
     script: |
-      echo Write your commands here
-      echo Hello world
-  displayName: check something 2
+      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="delete bookmark" pioro/dctask:latest
+  displayName: delete bookmark
+
 
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
-      docker run -v `pwd`:/code -e URL=$(URL) -e API_KEY=$(API_KEY_SHELL) -e TASK_NAME="create bookmark" pioro/dctask:latest
-  env:
-    API_KEY_SHELL: $(API_KEY) 
+      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="create bookmark" pioro/dctask:latest
   displayName: create bookmark
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "placeholder"
+  displayName: Run destrictive test
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="refresh from bookmark" pioro/dctask:latest
+  displayName: create bookmark
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "placeholder"
+  displayName: Run destrictive test 2
