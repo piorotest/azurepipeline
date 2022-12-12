@@ -16,7 +16,12 @@ steps:
       echo Hello world
       echo $PIPENAME_SHELL
       echo $URL_SHELL
+      echo $(Date:yyyyMMdd)$(Rev:.r)
+      echo "bi name"
+      echo $BINAME
   displayName: check something 2
+  env:
+    BINAME: $(Date:yyyyMMdd)$(Rev:.r)
 
 
 
