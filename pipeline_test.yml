@@ -19,7 +19,7 @@ steps:
       echo $MARCIN
   displayName: check something 2
   env:
-     MARCIN=$(System.JobDisplayName)
+     MARCIN: $(System.JobDisplayName)
 
 
 - task: Bash@3
