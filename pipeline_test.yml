@@ -1,7 +1,7 @@
 variables:
    URL_SHELL: $(URL)
    API_KEY_SHELL: $(API_KEY)
-   PIPENAME: $(Date:yyyyMMdd)$(Rev:.r)
+   PIPENAME_SHELL: $(Date:yyyyMMdd)$(Rev:.r)
 
 pool:
   name: Azure Pipelines
@@ -14,7 +14,8 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
-      echo $PIPENAME
+      echo $PIPENAME_SHELL
+      echo $URL_SHELL
   displayName: check something 2
 
 
