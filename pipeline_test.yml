@@ -13,6 +13,7 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
+      echo $(System.JobId)
   displayName: check something 2
 
 
