@@ -30,8 +30,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="create a pipeline database" pioro/dctask:latest
-  displayName: Provision pipeline database from bookmark
+      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="refresh from bookmark" pioro/dctask:latest
+  displayName: refresh a pipeline database from bookmark to run destructive
 
 - task: Bash@3
   inputs:
