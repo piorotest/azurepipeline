@@ -15,7 +15,7 @@ resources:
 
 
 extends: 
-  template: delphix_bookmarks.yml@templates
+  template: pipedb_runtest.yml@templates
   parameters:
     usersteps:
     - task: Bash@3
