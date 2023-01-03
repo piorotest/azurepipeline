@@ -10,7 +10,7 @@ resources:
   repositories:
   - repository: templates
     type: git
-    name: marcindemo/pipeline_test
+    name: pipeline_test/pipeline_test
     ref: refs/heads/main
 
 
