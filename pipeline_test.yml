@@ -15,7 +15,7 @@ resources:
 
 
 extends: 
-  template: delphix_bookmarks.yml
+  template: delphix_bookmarks.yml@templates
   parameters:
     usersteps:
     - task: Bash@3
