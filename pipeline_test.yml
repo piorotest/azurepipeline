@@ -5,65 +5,23 @@ variables:
 
 pool:
   name: Azure Pipelines
-steps:
-- task: DockerInstaller@0
-  displayName: 'Install Docker 17.09.0-ce'
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: marcindemo/pipeline_test
+    ref: refs/heads/main
 
 
-- task: Bash@3
-  continueOnError: True
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="delete bookmark" pioro/dctask:latest
-  displayName: delete bookmark on devdb - if exist
+extends: 
+  template: delphix_bookmarks.yml
+  parameters:
+    usersteps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo "placeholder"
+      displayName: Run destrictive test
 
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="create bookmark" pioro/dctask:latest
-  displayName: create bookmark on devdb 
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="refresh from bookmark" pioro/dctask:latest
-  displayName: refresh a pipeline database from bookmark to run destructive test
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      echo "placeholder"
-  displayName: Run destrictive test
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="create bookmark after test 1" pioro/dctask:latest
-  displayName: create bookmark on pipedb after test 1
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="refresh from bookmark" pioro/dctask:latest
-  displayName: refresh a pipeline database from bookmark to run another test
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      echo "placeholder"
-  displayName: Run destrictive test 2
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      docker run -v `pwd`:/code -e URL=$(URL_SHELL) -e PIPENAME="$(PIPENAME_SHELL)" -e API_KEY="$(API_KEY_SHELL)" -e TASK_NAME="create bookmark after test 2" pioro/dctask:latest
-  displayName: create bookmark on pipedb after test 2
