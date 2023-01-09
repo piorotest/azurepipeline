@@ -23,5 +23,6 @@ extends:
         targetType: 'inline'
         script: |
           echo "placeholder"
+          exit 1
       displayName: Run destrictive test
 
