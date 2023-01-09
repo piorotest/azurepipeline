@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+   <changeSet author="marcin@delphix.com" id="8adf1170a633d51bd4de5d568de7be4e6dc9c9bf" failOnError="true" runAlways="false" >
+      <sqlFile dbms="mssql"
+               path="TEST_TABLE.sql"
+               relativeToChangelogFile="true"
+               splitStatements="false"
+               stripComments="false"/>
+    </changeSet>
+
+</databaseChangeLog>
