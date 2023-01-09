@@ -23,12 +23,6 @@ extends:
       inputs:
         targetType: 'inline'
         script: |
-          ls -lR $(Build.SourcesDirectory)
-
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: |
               DBNAME="pipedb_$(PIPENAME_SHELL)"
               export DBNAME=${DBNAME/./}
               docker run -v $(Build.SourcesDirectory)/azurepipeline/schema:/liquibase/changelog liquibase/liquibase:latest --changeLogFile changelog/main.xml --url "jdbc:sqlserver://uvo1sflnv1auw79mvq4.vm.cld.sr;Port=1434;DatabaseName=$DBNAME;encrypt=true;trustServerCertificate=true" --username lb --password lb  update
@@ -39,6 +33,5 @@ extends:
         targetType: 'inline'
         script: |
           echo "placeholder"
-          exit 1
       displayName: Run destrictive test
 
