@@ -23,7 +23,8 @@ extends:
       inputs:
         targetType: 'inline'
         script: |
-              docker run -v $(Build.SourcesDirectory)/schema:/liquibase/changelog liquibase/liquibase:latest --changeLogFile changelog/main.xml --url "jdbc:sqlserver://uvo1sflnv1auw79mvq4.vm.cld.sr;Port=1434;DatabaseName=pipedb_$(PIPENAME_SHELL);encrypt=true;trustServerCertificate=true" --username lb --password lb  update
+              export DBNAME=${pipedb_$(PIPENAME_SHELL)/./}
+              docker run -v $(Build.SourcesDirectory)/schema:/liquibase/changelog liquibase/liquibase:latest --changeLogFile changelog/main.xml --url "jdbc:sqlserver://uvo1sflnv1auw79mvq4.vm.cld.sr;Port=1434;DatabaseName=$DBNAME;encrypt=true;trustServerCertificate=true" --username lb --password lb  update
       displayName: Deploy code
 
     - task: Bash@3
