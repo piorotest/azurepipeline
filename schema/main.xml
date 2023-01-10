@@ -9,5 +9,6 @@
   <include file="TABLE/TEST_TABLE.xml" relativeToChangelogFile="true"/>
   <include file="TABLE/TEST_TABLE_1.xml" relativeToChangelogFile="true"/>
   <include file="TABLE/DEV_TABLE.xml" relativeToChangelogFile="true"/>
+  <include file="TABLE/D_TABLE.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
