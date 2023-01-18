@@ -33,12 +33,19 @@ extends:
       inputs:
         targetType: 'inline'
         script: |
-          echo "placeholder"
-      displayName: Run destrictive test
+          sqlcmd -d $(DBNAMEJOB) -S uvo1sflnv1auw79mvq4.vm.cld.sr,1434 -U lb -P lb  -Q "select count(*) from test_table"
+      displayName: Pre destrictive test
 
     - task: Bash@3
       inputs:
         targetType: 'inline'
         script: |
-          sqlcmd -d $(DBNAMEJOB) -S uvo1sflnv1auw79mvq4.vm.cld.sr,1434 -U lb -P lb  -Q "truncate table D_TABLE"
-      displayName: Run destrictive test 2
+          sqlcmd -d $(DBNAMEJOB) -S uvo1sflnv1auw79mvq4.vm.cld.sr,1434 -U lb -P lb  -Q "truncate table test_table"
+      displayName: Run destrictive test 
+
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          sqlcmd -d $(DBNAMEJOB) -S uvo1sflnv1auw79mvq4.vm.cld.sr,1434 -U lb -P lb  -Q "select count(*) from test_table"
+      displayName: Post destrictive test
