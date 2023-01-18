@@ -25,6 +25,7 @@ extends:
         script: |
               DBNAME="pipedb_$(PIPENAME_SHELL)"
               export DBNAME=${DBNAME/./}
+              echo "##vso[task.setvariable variable=DBNAMEJOB]$DBNAME"
               docker run -v $(Build.SourcesDirectory)/azurepipeline/schema:/liquibase/changelog liquibase/liquibase:latest --changeLogFile changelog/main.xml --url "jdbc:sqlserver://uvo1sflnv1auw79mvq4.vm.cld.sr;Port=1434;DatabaseName=$DBNAME;encrypt=true;trustServerCertificate=true" --username lb --password lb  update
       displayName: Deploy code
 
@@ -35,3 +36,13 @@ extends:
           echo "placeholder"
       displayName: Run destrictive test
 
+    - task: SqlDacpacDeploymentOnMachineGroup@0
+      inputs:
+        TaskType: 'sqlInline'
+        InlineSql: 'truncate table d_table'
+        ServerName: 'uvo1sflnv1auw79mvq4.vm.cld.sr,1434'
+        DatabaseName: '$(DBNAMEJOB)'
+        AuthScheme: 'sqlServerAuthentication'
+        SqlUsername: 'lb'
+        SqlPassword: 'lb'
+      displayName: Run destrictive test 2
